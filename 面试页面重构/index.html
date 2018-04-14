@@ -36,9 +36,31 @@
             </nav>
         </div>
         <form action="" method="get">
-            <input type="text" class="search">
+            <div class="search-box">
+                <input type="text" value="" class="search">
+                <button type="submit" value="Submit">搜索</button>
+            </div>
+            <div class="form-text" id="formText">
+                <span>花瓣</span>
+                <span>冬天</span>
+                <span>雪景</span>
+                <span>秋天</span>
+            </div>
         </form>
     </div>
 </header>
 </body>
+
+
+<script>
+    var formText=document.getElementById("formText").children;
+    var search=document.querySelector(".search");
+    for(var i=0;i<formText.length;i++){
+        formText[i].onclick=function(){
+            search.value=this.innerHTML;
+        };
+        console.log(i)
+    }
+    console.log(formText)
+</script>
 </html>
