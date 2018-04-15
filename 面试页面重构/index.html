@@ -19,7 +19,7 @@
                     <div class="logo1"></div>
                 </div>
                 <div class="logo_right fr">
-                    图图
+                    <h1>图图</h1>
                 </div>
             </div>
             <nav class="fr clearfix">
@@ -38,7 +38,7 @@
         <form action="" method="get">
             <div class="search-box">
                 <input type="text" value="" class="search">
-                <button type="submit" value="Submit">搜索</button>
+                <button type="submit" value="Submit"><img src="images/sousuo.png" alt=""></button>
             </div>
             <div class="form-text" id="formText">
                 <span>花瓣</span>
@@ -49,15 +49,55 @@
         </form>
     </div>
 </header>
+<div class="classification">
+    <div class="content">
+        <h2>分类</h2>
+        <span class="title">classification</span>
+        <div class="form-text">
+            <span>花瓣</span>
+            <span>冬天</span>
+            <span>雪景</span>
+            <span>秋天</span>
+        </div>
+        <div class="class_img fl clearfix">
+            <div class="fl"><img src="images/class1.jpg" alt=""></div>
+            <div class="fl"><img src="images/class2.jpg" alt=""></div>
+            <div class="fl"><img src="images/class4.jpg" alt=""></div>
+            <div class="fl"><img src="images/class6.jpg" alt=""></div>
+            <div class="fl"><img src="images/class7.jpg" alt=""></div>
+            <div class="fl"><img src="images/class8.jpg" alt=""></div>
+        </div>
+        <div class="fr">
+            <img src="images/class5.jpg" alt="">
+        </div>
+        <div class="ckgd">
+            查看更多
+        </div>
+    </div>
+</div>
+<div class="featured">
+    <div class="content">
+        <h2>精选</h2>
+        <span class="title">Featured</span>
+    </div>
+    <div class="content">
+        <a href=""><img src="images/jx1.jpg" alt=""></a>
+        <a href="" class="ml50 mr50"><img src="images/jx1.jpg" alt=""></a>
+        <a href=""><img src="images/jx1.jpg" alt=""></a>
+        <a href=""><img src="images/jx1.jpg" alt=""></a>
+        <a href="" class="ml50 mr50"><img src="images/jx1.jpg" alt=""></a>
+        <a href=""><img src="images/jx1.jpg" alt=""></a>
+    </div>
+</div>
 </body>
 
 
 <script>
-    var formText=document.getElementById("formText").children;
-    var search=document.querySelector(".search");
-    for(var i=0;i<formText.length;i++){
-        formText[i].onclick=function(){
-            search.value=this.innerHTML;
+    var formText = document.getElementById("formText").children;
+    var search = document.querySelector(".search");
+    for (var i = 0; i < formText.length; i++) {
+        formText[i].onclick = function () {
+            search.value = this.innerHTML;
         };
         console.log(i)
     }
