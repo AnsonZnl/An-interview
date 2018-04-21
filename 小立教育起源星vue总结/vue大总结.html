@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue知识点大总结</title>
+</head>
+<body>
+	 
+
+	   <!--  一、vue的基本概念 
+	      1.同jquery，都是js框架
+	      2.jquery更适合做页面(网页效果)，vue更适合做web应用(博客，论坛)
+	      3.jquery同原生js一样，都需要操作繁琐的Dom元素，而vue简化了Dom操作
+          vue的一个缺点：不支持IE8 safari 还有一些手机
+        -->
+
+	
+
+	     <!-- 案例:使用原生js和vue操作元素的一个区别 -->
+	      <!-- 1.原生js -->
+		     <!-- <h1 id='h1'></h1> -->
+		     <script>
+		     	// document.querySelector('#h1').innerHTML='你好世界';
+		     </script>
+          
+          <!-- 2.vue -->
+
+           <!-- <div id='itany'>{{message}}</div> -->
+            <script src='vue.js'></script>
+            <script>
+            	// new Vue({
+             //          el:'#itany',
+             //          data:{
+             //          	message:'你好世界'
+             //          }
+           		// })
+            </script>
+
+            <!-- 
+               注：使用{{}}就相当于解析变量
+             -->
+            <hr>
+        
+    <!-- 
+		二、vue中的一些常用指令指令
+		    1.v-for     循环
+		    2.v-model   双向数据绑定
+		    3.v-show  	控制元素的显示和隐藏
+		    4.v-if    	控制元素的显示和隐藏
+		    5.v-on    	绑定事件  可以简写为@
+		    6.v-bind  	绑定属性  可以简写为:bind
+     -->
+
+          <!-- 案例 -->
+            <!-- 1.v-for 循环  -->
+	            <!-- <div id='itany'>
+	            	<ul>
+	            		<li v-for="fruit in fruitList">{{fruit}}</li>
+	            	</ul> 
+	            	<table>
+	            		<tr v-for='(foods,index) in foodList'>
+	            			<td>{{foods.fname}}</td>
+	            			<td>{{foods.price}}</td>
+	            			<td>{{foods.count}}</td>
+	            		</tr>
+	            	</table>
+	            </div> -->
+	            <script src='vue.js'></script>
+	              <script>
+	            // new Vue({
+	            // 	el:'#itany',
+	            // 	data:{
+	            // 		fruitList:['香蕉','苹果','鸭梨'],
+	            // 		foodList:[
+	            // 			{fname:'葱',price:3,count:2},
+	            // 			{fname:'姜',price:4,count:3},
+	            // 			{fname:'蒜',price:5,count:4}
+	            // 		]
+	            // 	}
+	            // })
+	            // 注：v-for="fruit in fruitList"中 fruit是自己起的名字,它的值就是要在元素中显示的内容，fruitList就是要遍历的数组或数组对象
+	            </script>
+
+            <!-- 2.v-model  双向数据绑定 -->
+           <!--  <div id='itany'>
+            	<input type="text" v-model='message'>
+            	<p>{{message}}</p>
+            </div> -->
+            <script src='vue.js'></script>
+            <script>
+            // new Vue({
+            // 	el:'#itany',
+            // 	data:{
+            // 		message:''
+            // 	}
+            // })
+            // input用v-model绑定的是data中的message,而p元素中也是要显示message,所以当input中的值改变了,p元素中的值也会随着改变
+            </script>
+
+            <!-- 3.v-show    v-if  控制元素的显示与隐藏 -->
+            <!-- <div id='itany'>
+            	<p v-show='see'>{{message}}</p>
+            	<p v-show='!see'>{{message}}</p>
+            	<p v-if='see'>{{msg}}</p>
+            	<p v-if='!see'>{{msg}}</p>
+            </div> -->
+            <script src='vue.js'></script>
+            <script>
+            	// new Vue({
+            	// 	el:'#itany',
+            	// 	data:{
+             //           message:'hello world',
+             //           msg:'你好世界',
+             //           see:'true'
+            	// 	}
+            	// })
+            // 注：
+            //   v-show是通过display:none;来控制元素的显示和隐藏的，元素还在dom树上
+            //   v-if是通过visibility:hidden 来控制元素隐藏的，元素直接从Dom树上被删除了
+            </script>
+
+            <!-- v-on:绑定事件  v-on:事件名可以简写为@:事件名 -->
+           <!--  <div id='itany'>
+               <button v-on:click='add()'>按钮</button>
+               <p>{{num}}</p>
+            </div> -->
+            <script src='vue.js'></script>
+            <script>
+                // new Vue({
+                // 	el:'#itany',
+                // 	data:{
+                // 		num:1
+                // 	},
+                // 	methods:{
+                // 		add:function(){
+                // 			this.num++;
+                // 		}
+                // 	}
+                // })
+             </script>
+
+            <!-- v-bind:绑定属性 可以把v-bind省略掉,直接写成 :src-->
+            <!-- <div id='itany'>
+            	<img v-bind:src="url" alt="">
+            	<img :src="url" alt="">
+            </div> -->
+            <script>
+            	// new Vue({
+            	// 	el:'#itany',
+            	// 	data:{
+            	// 		url:'img/1.jpg'
+            	// 	}
+            	// })
+            </script>
+    <!--  
+		三、组件：一个带有功能的自定义的html元素，并且可以实现某些效果
+		    1.注册一个组件
+		         格式：
+		            Vue.component('组件名',选项)
+    -->    
+             <!--案例1:一个最简单的组件  -->
+            <!--  <div id='itany'>
+             	<list></list>
+             	<list></list>
+             	<list></list>
+             </div> -->
+             <script src='vue.js'></script>
+             // <script>
+             // Vue.component('list',{
+             // 	template:'<h1>我是h1标签</h1>'
+             // })
+             // new Vue({
+             // 	el:'#itany',
+             // })
+             //注：
+             //1.组件名为list,template中的效果就是list所包含的内容。如果 想要在页面中展示很多信息，可以把这些信息都写在template中，然后静态页面中直接写组件名就可以了
+             
+             //2.组件名可以被重复使用
+             
+             //3.组件必须要写在vue实例的上面，不然会报错
+             </script>
+
+             <!-- 案例2:组件中应该包含的选项 -->
+	            <!--  <div id='itany'>
+	             	<lists></lists>
+	             </div> -->
+             <script>
+	             // Vue.component('lists',{
+	             //     template:"<button v-on:click='alt()'>{{msg}}</button>",
+	             //     data:function(){
+	             //     	return{
+	             //     		msg:'按钮'
+	             //     	}
+	             //     },
+	             //     methods:{
+	             //     	alt:function(){
+	             //     		alert('您点击了按钮')
+	             //     	} 
+	             //     }
+	             // })
+	             // new Vue({
+	             // 	el:'#itany',
+	             // })
+	             // 注:组件中和vue实例中一样，同样可以有data和methods两个选项，同样的，vue中的指令在组件中同样生效。但注意在组件中data与vue实例中的不同之处
+             </script>
+
+             <!--组件的嵌套:和HTML元素一样，组件同样是可以被嵌套的  -->
+             <!-- <div id='itany'>
+             	<all></all>>
+             </div> -->
+             <script>
+             // Vue.component('all',{
+             // 	template:`
+		           //   	  <div>
+             //                  <list></list>
+             //                  <fruit></fruit>
+		           //   	  </div>
+		           //   	`
+             // })
+             //  Vue.component('list',{
+             // 	template:`
+		           //   	  <h3>水果列表</h3>
+		           //   	`
+             // })
+             //   Vue.component('fruit',{
+             // 	template:`
+             // 	          <ul>
+             //                 <li>香蕉</li>
+             //                 <li>苹果</li>
+             //                 <li>鸭梨</li>
+             // 	          </ul>
+		             	  
+		           //   	`
+             // })
+             // new Vue({
+             // 	el:'#itany'
+             // })
+
+             // 注：
+             //1.all相当于最外层的大组件，list和fruit都相当于子组件
+             //2.子组件中不可以放两个并列的元素，如下所示为错误做法
+              //   Vue.component('list',{
+             	// template:`
+		            //  	  <h3>水果列表1</h3>
+		            //  	  <h3>水果列表2</h3>
+		            //  	`
+              //   })
+                
+              //   正确做法：给template中的元素添加一个父元素
+                  //  Vue.component('list',{
+					             // 	template:`
+					             // 	          <div>	
+								          //    	  <h3>水果列表1</h3>
+								          //    	  <h3>水果列表2</h3>
+								          //     </div>	  
+							           //   	`
+					             // })
+             </script>
+
+             <h1>组件之间的数据传递</h1>
+             <!-- 
+                 用propos属性实现组件之间的数据传递
+              -->
+                <h2>父级向子集传递数据</h2>
+                <!-- <div id="itany">
+				    <father></father>
+				</div> -->
+				<script>
+					// Vue.component('child',{
+				 //        props:['fathd'],
+				 //        template:`
+				 //            <h1>{{fathd}}</h1>
+				 //        `
+				 //    });
+
+				 //    Vue.component('father',{
+				 //       template:`
+				 //            <div>
+				 //                <h1>我是父组件</h1>
+				 //                <child :fathd="num1"></child>
+				 //            </div>
+				 //       `,
+				 //       data:function(){
+				 //           return {
+				 //               num1:5
+				 //           }
+				 //       }
+				 //    })
+
+				 //    new Vue({
+				 //        el: '#app',
+				 //    })
+				</script>
+				<!-- 使用$emit实现子组件向父组件传递数据 -->
+				<!-- <h2>子组件向父组件传递数据</h2>
+				<div id="app">
+				    <father-component></father-component>
+				</div> -->
+				<script src="vue.js"></script>
+				<script>
+				    Vue.component('father-component',{
+				        template:`
+				            <div>
+				                <h1>这是父组件</h1>
+				                <p>子组件传来的数据为{{sonMsg}}</p>
+				                <child-component @customEvent="rcvMsg"></child-component>
+				            </div>
+				        `,
+				        data:function(){
+				            return{
+				                sonMsg:''
+				            }
+				        },
+				        methods:{
+				            rcvMsg:function(msg){
+				                this.sonMsg=msg
+				            }
+				        }
+				    })
+
+				    Vue.component('child-component',{
+				        template:`
+				           <div>
+				            <h1>这是子组件</h1>
+				            <input type="text" v-model="myMsg"/>
+				            <button @click="sendMsgToFather()">向父组件传递参数</button>
+				          </div>
+				        `,
+				        data:function(){
+				            return{
+				                myMsg:''
+				            }
+				        },
+				        methods:{
+				            sendMsgToFather:function(){
+				                this.$emit(
+				                        'customEvent',
+				                        this.myMsg
+				                )
+				            }
+				        }
+				    })
+				    new Vue({
+				        el:'#app'
+				    })
+				</script>
+
+
+
+</body> 
+</html>
